@@ -1,6 +1,5 @@
 # Pharmacy-Management-System
-The project aims to assist a pharmacy in managing its inventory, details of customers, employees and suppliers as well as keeping track of its
-purchases and sales. It is a web-based application implemented using PHP with MySQL as the Database Management System. User Interface is designed using HTML5, CSS3 and JavaScript.
+The project aims to assist a pharmacy in managing its inventory, and employees. It is a web-based application implemented using PHP with MySQL as the Database Management System. User Interface is designed using HTML5, CSS3 and JavaScript.
 
 # Getting Started
 
@@ -33,11 +32,11 @@ purchases and sales. It is a web-based application implemented using PHP with My
 
 ## Introduction
 
-**Pharmacia**, a **Pharmacy Management System** aims to help in maintaining and managing the records for a pharmaceutical store by improving efficiency, accuracy and security. 
+**PharmaTrack**, a **Pharmacy Management System** aims to help in maintaining and managing the records for a pharmaceutical store by improving efficiency, accuracy and security. 
 
-Pharmacies need to maintain details of medicine stock, suppliers, employees, customers, any stock purchased by the pharmacy and any sales made by the pharmacy. The previous manual methods require the pharmacists to manually monitor all the records lists and transactions and to verify the presence of the each drug in the pharmacy. Searching for any required drug may be difficult. 
+Pharmacies need to maintain details of medicine stock, employees, any stock purchased by the pharmacy. The previous manual methods require the pharmacists to manually monitor all the records lists and to verify the presence of the each drug in the pharmacy. Searching for any required drug may be difficult. 
 
-Using the Pharmacy Management System, one can maintain stock and inventory, oversee transactions, manage suppliers and employees and maintains records of its customers. 
+Using the Pharmacy Management System, one can maintain stock and inventory. 
 The system will help prevent waste of time and resources, allow easy access to medicines, as well as ensure more security and reliability for the data compared to the manual systems. The system assists the pharmacy in handling the daily requirements in a smoother, better and effective manner. 
 
 ## Objectives
@@ -63,35 +62,6 @@ The system is developed for use by either the **Admin** or **Pharmacists**.
 - Access and update all customers’ details
 - Keep track of all sale transactions
 - Generate and view reports based on the data
-
-### Screenshots
-
-#### Admin Login Page
-
-<img src="https://github.com/Varshini-E/Pharmacy-Management-System/blob/master/Screenshots/admin-login.png">
-
-#### Admin DashBoard
-
-<img src="https://github.com/Varshini-E/Pharmacy-Management-System/blob/master/Screenshots/admin-mainpage.png">
-
-### Pharmacist Capabilities:
-
-- View the inventory of medicines, their price, quantity and other details – no changes are allowed from a pharmacist point of view
-- View minimal details regarding existing customers
-- Add a new customer to their database
-- Make a new sale and register the sale details onto the database
-
-### Screenshots
-
-#### Pharmacist Login Page
-
-<img src="https://github.com/Varshini-E/Pharmacy-Management-System/blob/master/Screenshots/pharmacist-login.png">
-
-#### Pharmacist DashBoard
-
-<img src="https://github.com/Varshini-E/Pharmacy-Management-System/blob/master/Screenshots/pharmacist-mainpage.png">
-
-***Check out other screenshots showing interface functionality here: [Screenshots](Screenshots)***
 
 ## Database Architecture
 
@@ -121,14 +91,6 @@ The system is developed for use by either the **Admin** or **Pharmacists**.
   
 ***EMPLOGIN***:
 	Contains the employee ID, the employee username and password for all the pharmacists and managers, apart from Admin. Pharmacist capabilities can be implemented by using any of the login details in the table. 
-	
-### ER Diagram
-
-<img src="https://github.com/Varshini-E/Pharmacy-Management-System/blob/master/ER_Diagram.png">
-
-### Relational Database Model
-
-<img src="https://github.com/Varshini-E/Pharmacy-Management-System/blob/master/RelationalModel.png">
 
 ## Additional Information
 

@@ -14,7 +14,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #003366;
+  background-color: #A594F9;
   padding-top: 10px;
   padding-left:5px;
   font-family:Arial;
@@ -26,7 +26,7 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
-  color: #bfbfbf;
+  color: #F5EFFF;
   display: block;
   border: none;
   background: none;
@@ -37,19 +37,19 @@
 }
 
 .sidenav a:hover, .dropdown-btn:hover {
-  color: #f1f1f1;
+  color: #CDC1FF;
 }
 
 
 .active {
-  background-color: #004d99;
-  color: white;
+  background-color: #A594F9;
+  color: #F5EFFF;
 }
 
 
 .dropdown-container {
   display: none;
-  background-color: #004d99;
+  background-color: #A594F9;
   padding-left: 8px;
 }
 
@@ -76,7 +76,7 @@ i {
 
 .topnav {
   overflow: hidden;
-  background-color: #003366;
+  background-color: #A594F9;
   margin:0px;
   vertical-align:top;
   width: 100%;
@@ -96,7 +96,7 @@ i {
   text-decoration: none;
   font-size: 20px;
   font-family:Arial;
-  color: #bfbfbf;
+  color: #F5EFFF;
   display: block;
   border: none;
   background: none;
@@ -105,7 +105,7 @@ i {
 }
 
 .topnav a:hover {
-  color: #f1f1f1
+  color: #CDC1FF
 }
 
 .topnav a.active {
@@ -117,7 +117,7 @@ div.head {
 width:78%;
 font-family:Arial;
 background-color:#e6e6e6;
-color:#003366;
+color:#A594F9;
 float:right;
 margin-top:80px;
 margin-right:53px;

@@ -14,7 +14,7 @@
 	}
 	
 	function filtertable($query)
-	{	$conn = mysqli_connect("localhost", "root", "", "pharmacy");
+	{	$conn = mysqli_connect("localhost:3307", "root", "", "pharmacy");
 		$filter_result=mysqli_query($conn,$query);
 		return $filter_result;
 	}

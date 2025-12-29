@@ -9,8 +9,8 @@ body{
   padding: 10px;
   margin:-10px;
   text-align: center;
-  background: #003366;
-  color: white;
+  background: #A594F9;
+  color: #F5EFFF;
   font-size: 30px;
   overflow:hidden;
 }
@@ -21,8 +21,8 @@ body{
    bottom: 0;
    width: 100%;
    right:0;
-   background-color: #003366;
-   color: white;
+   background-color: #A594F9;
+   color: #F5EFFF;
    text-align: center;
    overflow:hidden;
 }
@@ -30,7 +30,7 @@ body{
 .container{
     width:30%;
 	margin:auto;
-	background-color:white;
+	background-color:#F5EFFF;
 	
 }
 
@@ -48,8 +48,8 @@ body{
     margin-top: 0px;
     font-weight: normal;
     padding: 10px;
-    background-color: #003366;
-    color: white;
+    background-color: #A594F9;
+    color: #F5EFFF;
     font-family: sans-serif;
 }
 
@@ -68,7 +68,7 @@ body{
 
 input[type=submit]{
   background-color: #0077b3;
-  color: white;
+  color: #F5EFFF;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
