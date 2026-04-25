@@ -12,7 +12,7 @@
 <body>
 
 	<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMATRACK </h2>
 			<a href="adminmainpage.php">Dashboard</a>
 			<button class="dropdown-btn">Inventory
 			<i class="down"></i>
@@ -21,7 +21,7 @@
 				<a href="inventory-add.php">Add New Medicine</a>
 				<a href="inventory-view.php">Manage Inventory</a>
 			</div>
-			<button class="dropdown-btn">Suppliers
+			<!-- <button class="dropdown-btn">Suppliers
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
@@ -34,7 +34,7 @@
 			<div class="dropdown-container">
 				<a href="purchase-add.php">Add New Purchase</a>
 				<a href="purchase-view.php">Manage Purchases</a>
-			</div>
+			</div> -->
 			<button class="dropdown-btn">Employees
 			<i class="down"></i>
 			</button>
@@ -42,7 +42,7 @@
 				<a href="employee-add.php">Add New Employee</a>
 				<a href="employee-view.php">Manage Employees</a>
 			</div>			
-			<button class="dropdown-btn">Customers
+			<!-- <button class="dropdown-btn">Customers
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
@@ -51,14 +51,14 @@
 			</div>
 			<a href="sales-view.php">View Sales Invoice Details</a>
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>		
+			<a href="pos1.php">Add New Sale</a>	 -->
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
 				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions Reports</a>				
+				<!-- <a href="salesreport.php">Transactions Reports</a>	-->
 			</div>		
 	</div>
 
@@ -76,17 +76,25 @@
 		<tr>
 			<th>Medicine ID</th>
 			<th>Medicine Name</th>
-			<th>Quantity Available</th>
 			<th>Category</th>
-			<th>Price</th>
-			<th>Location in Store</th>
+			<th>Quantity</th>
+			<th>Expiry Date</th>
 			<th>Action</th>
 		</tr>
 	
 	<?php
 	include "config.php";
 	
-		$sql = "SELECT med_id, med_name,med_qty,category,med_price,location_rack FROM meds";
+		$sql = "
+		SELECT 
+			m.med_id, 
+			m.med_name,
+			m.category,
+			m.med_qty,
+			m.exp_date
+		FROM meds m
+		GROUP BY m.med_id
+		";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 		
@@ -95,12 +103,26 @@
 		echo "<tr>";
 			echo "<td>" . $row["med_id"]. "</td>";
 			echo "<td>" . $row["med_name"] . "</td>";
-			echo "<td>" . $row["med_qty"]. "</td>";
 			echo "<td>" . $row["category"]. "</td>";
-			echo "<td>" . $row["med_price"] . "</td>";
-			echo "<td>" . $row["location_rack"]. "</td>";
+			echo "<td>" . $row["med_qty"]. "</td>";
+			
+			$exp = $row["exp_date"];
+			if ($exp) {
+				$today = date("Y-m-d");
+
+				if ($exp < $today) {
+					echo "<td style='color:red; font-weight:bold;'>" . date("M d, Y", strtotime($exp)) . " (Expired)</td>";
+				} elseif ($exp <= date("Y-m-d", strtotime("+30 days"))) {
+					echo "<td style='color:orange;'>" . date("M d, Y", strtotime($exp)) . " (Soon)</td>";
+				} else {
+					echo "<td>" . date("M d, Y", strtotime($exp)) . "</td>";
+				}
+			} else {
+				echo "<td>N/A</td>";
+			}
+
 			echo "<td align=center>";
-						 
+
 				echo "<a class='button1 edit-btn' href=inventory-update.php?id=".$row['med_id'].">Edit</a>";
 			
 				echo "<a class='button1 del-btn' href=inventory-delete.php?id=".$row['med_id'].">Delete</a>";
@@ -122,15 +144,15 @@
 		var i;
 
 			for (i = 0; i < dropdown.length; i++) {
-			  dropdown[i].addEventListener("click", function() {
-			  this.classList.toggle("active");
-			  var dropdownContent = this.nextElementSibling;
-			  if (dropdownContent.style.display === "block") {
-			  dropdownContent.style.display = "none";
-			  } else {
-			  dropdownContent.style.display = "block";
-			  }
-			  });
+				dropdown[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var dropdownContent = this.nextElementSibling;
+				if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				} else {
+				dropdownContent.style.display = "block";
+				}
+				});
 			}
 			
 </script>

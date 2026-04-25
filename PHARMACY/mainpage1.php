@@ -4,11 +4,11 @@
 <head>
 <link rel="stylesheet" type="text/css" href="login1.css">
 <div class="header">
-<h1>PHARMACIA</h1>
+<h1>PHARMATRACK</h1>
 <p style="margin-top:-20px;line-height:1;font-size:30px;">Pharmacy Management System</p>
 </div>
 <title>
-Pharmacia 
+PharmaTrack
 </title>
 </head>
 
@@ -30,10 +30,9 @@ Pharmacia
 					<input type="submit" value="Submit" name="submit" id="submit" />
 					<input type="submit" value="Click here for Admin Login" name="psubmit" id="submit" />
 				</div>
-			 
-				
+
 	<?php
-				
+
 		include "config.php";
 
 		if(isset($_POST['submit'])){

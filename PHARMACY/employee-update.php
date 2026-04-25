@@ -1,16 +1,16 @@
 <?php
-		include "config.php";
-		
-		if(isset($_GET['id']))
-		{
-			$id=$_GET['id'];
-			$qry1="SELECT * FROM employee WHERE e_id='$id'";
-			$result = $conn->query($qry1);
-			$row = $result -> fetch_row();
-		}
+	include "config.php";
+	
+	if(isset($_GET['id']))
+	{
+		$id=$_GET['id'];
+		$qry1="SELECT * FROM employee WHERE e_id='$id'";
+		$result = $conn->query($qry1);
+		$row = $result -> fetch_row();
+	}
 
-		 ?>
-		 
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +26,7 @@ Employees
 <body>
 
 		<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMATRACK </h2>
 			<a href="adminmainpage.php">Dashboard</a>
 			<button class="dropdown-btn">Inventory
 			<i class="down"></i>
@@ -35,7 +35,7 @@ Employees
 				<a href="inventory-add.php">Add New Medicine</a>
 				<a href="inventory-view.php">Manage Inventory</a>
 			</div>
-			<button class="dropdown-btn">Suppliers
+			<!-- <button class="dropdown-btn">Suppliers
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
@@ -48,7 +48,7 @@ Employees
 			<div class="dropdown-container">
 				<a href="purchase-add.php">Add New Purchase</a>
 				<a href="purchase-view.php">Manage Purchases</a>
-			</div>		
+			</div>		 -->
 			<button class="dropdown-btn">Employees
 			<i class="down"></i>
 			</button>
@@ -56,7 +56,7 @@ Employees
 				<a href="employee-add.php">Add New Employee</a>
 				<a href="employee-view.php">Manage Employees</a>
 			</div>			
-			<button class="dropdown-btn">Customers
+			<!-- <button class="dropdown-btn">Customers
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
@@ -65,14 +65,14 @@ Employees
 			</div>
 			<a href="sales-view.php">View Sales Invoice Details</a>
 			<a href="salesitems-view.php">View Sold Products Details</a>
-			<a href="pos1.php">Add New Sale</a>		
+			<a href="pos1.php">Add New Sale</a>		 -->
 			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
 				<a href="stockreport.php">Medicines - Low Stock</a>
 				<a href="expiryreport.php">Medicines - Soon to Expire</a>
-				<a href="salesreport.php">Transactions Reports</a>			
+				<!-- <a href="salesreport.php">Transactions Reports</a>			 -->
 			</div>		
 	</div>
 
@@ -91,7 +91,7 @@ Employees
 			
 	<?php
 			if( isset($_POST['update']))
-		 {
+		{
 			$id = mysqli_real_escape_string($conn, $_REQUEST['eid']);
 			$fname = mysqli_real_escape_string($conn, $_REQUEST['efname']);
 			$lname = mysqli_real_escape_string($conn, $_REQUEST['elname']);
@@ -104,7 +104,7 @@ Employees
 			$phno = mysqli_real_escape_string($conn, $_REQUEST['ephno']);
 			$mail = mysqli_real_escape_string($conn, $_REQUEST['e_mail']);
 			$add = mysqli_real_escape_string($conn, $_REQUEST['eadd']);
-			 
+
 		$sql="UPDATE employee
 			SET e_fname='$fname',e_lname='$lname',bdate='$bdate',e_age='$age',e_sex='$sex',
 			e_type='$etype',e_jdate='$jdate',e_sal='$sal',e_phno='$phno',e_mail='$mail',e_add='$add' where e_id='$id'";
@@ -113,10 +113,10 @@ Employees
 		header("location:employee-view.php");
 		else
 		echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
-		 }
-		 
+		}
+
 	?>
-		 
+
 			<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 				<div class="column">
 					<p>
@@ -153,10 +153,10 @@ Employees
 						<label for="ejdate">Date of Joining:</label><br>
 						<input type="date" name="ejdate" value="<?php echo $row[7]; ?>">
 					</p>
-					<p>
+					<!-- <p>
 						<label for="esal">Salary:</label><br>
 						<input type="number" step="0.01" name="esal" value="<?php echo $row[8]; ?>">
-					</p>
+					</p> -->
 					<p>
 						<label for="ephno">Phone Number:</label><br>
 						<input type="number" name="ephno" value="<?php echo $row[9]; ?>">
@@ -187,15 +187,15 @@ Employees
 		var i;
 
 			for (i = 0; i < dropdown.length; i++) {
-			  dropdown[i].addEventListener("click", function() {
-			  this.classList.toggle("active");
-			  var dropdownContent = this.nextElementSibling;
-			  if (dropdownContent.style.display === "block") {
-			  dropdownContent.style.display = "none";
-			  } else {
-			  dropdownContent.style.display = "block";
-			  }
-			  });
+				dropdown[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var dropdownContent = this.nextElementSibling;
+				if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				} else {
+				dropdownContent.style.display = "block";
+				}
+				});
 			}
 		
 </script>

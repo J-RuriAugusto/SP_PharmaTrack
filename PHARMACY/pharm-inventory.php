@@ -9,12 +9,21 @@
 		$search_result=mysqli_query($conn,"CALL `SEARCH_INVENTORY`(@p0);") or die(mysqli_error($conn));
 	}
 	else {
-			$query="SELECT med_id as medid, med_name as medname,med_qty as medqty,category as medcategory,med_price as medprice,location_rack as medlocation FROM meds";
-			$search_result=filtertable($query);
+		$query="
+			SELECT 
+				m.med_id as medid,
+				m.med_name as medname,
+				m.category as medcategory,
+				m.med_qty as medqty,
+				m.exp_date
+			FROM meds m
+			GROUP BY m.med_id
+		";
+		$search_result=filtertable($query);
 	}
 	
 	function filtertable($query)
-	{	$conn = mysqli_connect("localhost", "root", "", "pharmacy");
+	{	$conn = mysqli_connect("localhost:3307", "root", "", "pharmacy");
 		$filter_result=mysqli_query($conn,$query);
 		return $filter_result;
 	}
@@ -36,16 +45,15 @@ Inventory
 <body>
 
 	<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMATRACK </h2>
 			<a href="pharmmainpage.php">Dashboard</a>
 			<a href="pharm-inventory.php">View Inventory</a>
-			<a href="pharm-pos1.php">Add New Sale</a>
-			<button class="dropdown-btn">Customers
+			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
-				<a href="pharm-customer.php">Add New Customer</a>
-				<a href="pharm-customer-view.php">View Customers</a>
+				<a href="pharm-stockreport.php">Medicines - Low Stock</a>
+				<a href="pharm-expiryreport.php">Medicines - Soon to Expire</a>
 			</div>
 	</div>
 
@@ -86,14 +94,12 @@ Inventory
 		<tr>
 			<th>Medicine ID</th>
 			<th>Medicine Name</th>
-			<th>Quantity Available</th>
 			<th>Category</th>
-			<th>Price</th>
-			<th>Location in Store</th>
+			<th>Quantity</th>
+			<th>Expiry Date</th>
 		</tr>
 		
 	<?php
-	
 		if ($search_result->num_rows > 0) {
 		
 		while($row = $search_result->fetch_assoc()) {
@@ -101,10 +107,22 @@ Inventory
 		echo "<tr>";
 			echo "<td>" . $row["medid"]. "</td>";
 			echo "<td>" . $row["medname"] . "</td>";
-			echo "<td>" . $row["medqty"]. "</td>";
 			echo "<td>" . $row["medcategory"]. "</td>";
-			echo "<td>" . $row["medprice"] . "</td>";
-			echo "<td>" . $row["medlocation"]. "</td>";
+			echo "<td>" . $row["medqty"]. "</td>";
+			$exp = $row["exp_date"];
+			if ($exp) {
+				$today = date("Y-m-d");
+
+				if ($exp < $today) {
+					echo "<td style='color:red; font-weight:bold;'>" . date("M d, Y", strtotime($exp)) . " (Expired)</td>";
+				} elseif ($exp <= date("Y-m-d", strtotime("+30 days"))) {
+					echo "<td style='color:orange;'>" . date("M d, Y", strtotime($exp)) . " (Soon)</td>";
+				} else {
+					echo "<td>" . date("M d, Y", strtotime($exp)) . "</td>";
+				}
+			} else {
+				echo "<td>N/A</td>";
+			}
 		echo "</tr>";
 		}
 		echo "</table>";
@@ -117,21 +135,21 @@ Inventory
 
 <script>
 	
-		var dropdown = document.getElementsByClassName("dropdown-btn");
-		var i;
+	var dropdown = document.getElementsByClassName("dropdown-btn");
+	var i;
 
-			for (i = 0; i < dropdown.length; i++) {
-			  dropdown[i].addEventListener("click", function() {
-			  this.classList.toggle("active");
-			  var dropdownContent = this.nextElementSibling;
-			  if (dropdownContent.style.display === "block") {
-			  dropdownContent.style.display = "none";
-			  } else {
-			  dropdownContent.style.display = "block";
-			  }
-			  });
+		for (i = 0; i < dropdown.length; i++) {
+			dropdown[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var dropdownContent = this.nextElementSibling;
+			if (dropdownContent.style.display === "block") {
+			dropdownContent.style.display = "none";
+			} else {
+			dropdownContent.style.display = "block";
 			}
-			
+			});
+		}
+
 </script>
 
 </html>

@@ -26,7 +26,7 @@ Medicines
 <body>
 
 	<div class="sidenav">
-		<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+		<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMATRACK </h2>
 		<a href="adminmainpage.php">Dashboard</a>
 		<button class="dropdown-btn">Inventory
 		<i class="down"></i>
@@ -35,7 +35,7 @@ Medicines
 			<a href="inventory-add.php">Add New Medicine</a>
 			<a href="inventory-view.php">Manage Inventory</a>
 		</div>
-		<button class="dropdown-btn">Suppliers
+		<!-- <button class="dropdown-btn">Suppliers
 		<i class="down"></i>
 		</button>
 		<div class="dropdown-container">
@@ -48,7 +48,7 @@ Medicines
 		<div class="dropdown-container">
 			<a href="purchase-add.php">Add New Purchase</a>
 			<a href="purchase-view.php">Manage Purchases</a>
-		</div>
+		</div> -->
 		<button class="dropdown-btn">Employees
 		<i class="down"></i>
 		</button>
@@ -56,7 +56,7 @@ Medicines
 			<a href="employee-add.php">Add New Employee</a>
 			<a href="employee-view.php">Manage Employees</a>
 		</div>
-		<button class="dropdown-btn">Customers
+		<!-- <button class="dropdown-btn">Customers
 		<i class="down"></i>
 		</button>
 		<div class="dropdown-container">
@@ -65,14 +65,14 @@ Medicines
 		</div>
 		<a href="sales-view.php">View Sales Invoice Details</a>
 		<a href="salesitems-view.php">View Sold Products Details</a>
-		<a href="pos1.php">Add New Sale</a>
+		<a href="pos1.php">Add New Sale</a> -->
 		<button class="dropdown-btn">Reports
 		<i class="down"></i>
 		</button>
 		<div class="dropdown-container">
 			<a href="stockreport.php">Medicines - Low Stock</a>
 			<a href="expiryreport.php">Medicines - Soon to Expire</a>
-			<a href="salesreport.php">Transactions Reports</a>
+			<!-- <a href="salesreport.php">Transactions Reports</a> -->
 		</div>	
 	</div>
 
@@ -99,10 +99,6 @@ Medicines
 					<input type="text" name="medname" value="<?php echo $row[1]; ?>">
 				</p>
 				<p>
-					<label for="qty">Quantity:</label><br>
-					<input type="number" name="qty" value="<?php echo $row[2]; ?>">
-				</p>
-				<p>
 					<label for="cat">Category:</label><br>
 					<input type="text" name="cat" value="<?php echo $row[3]; ?>">
 				</p>
@@ -110,12 +106,12 @@ Medicines
 				
 				<div class="column">
 				<p>
-					<label for="sp">Price: </label><br>
-					<input type="number" step="0.01" name="sp" value="<?php echo $row[4]; ?>">
+					<label for="qty">Quantity:</label><br>
+					<input type="number" name="qty" value="<?php echo $row[2]; ?>">
 				</p>
 				<p>
-					<label for="loc">Location:</label><br>
-					<input type="text" name="loc" value="<?php echo $row[5]; ?>">
+					<label for="expdate">Expiry Date:</label><br>
+					<input type="date" name="expdate" value="<?php echo $row[6]; ?>">
 				</p>
 				</div>
 		
@@ -124,15 +120,14 @@ Medicines
 				
 	<?php
 
-		if( isset($_POST['medname'])||isset($_POST['qty'])||isset($_POST['cat'])||isset($_POST['sp'])||isset($_POST['loc'])) {
-			 $id=$_POST['medid'];
-			 $name=$_POST['medname'];
-			 $qty=$_POST['qty'];
-			 $cat=$_POST['cat'];
-			 $price=$_POST['sp'];
-			 $lcn=$_POST['loc'];
-			 
-		$sql="UPDATE meds SET med_name='$name',med_qty='$qty',category='$cat',med_price='$price',location_rack='$lcn' where med_id='$id'";
+		if( isset($_POST['medname'])||isset($_POST['qty'])||isset($_POST['cat'])||isset($_POST['expdate'])) {
+			$id=$_POST['medid'];
+			$name=$_POST['medname'];
+			$qty=$_POST['qty'];
+			$cat=$_POST['cat'];
+			$exp=$_POST['expdate'];
+			
+		$sql="UPDATE meds SET med_name='$name',med_qty='$qty',category='$cat',exp_date='$exp' where med_id='$id'";
 		if ($conn->query($sql))
 		header("location:inventory-view.php");
 		else
@@ -150,17 +145,17 @@ Medicines
 		var dropdown = document.getElementsByClassName("dropdown-btn");
 		var i;
 
-			for (i = 0; i < dropdown.length; i++) {
-			  dropdown[i].addEventListener("click", function() {
-			  this.classList.toggle("active");
-			  var dropdownContent = this.nextElementSibling;
-			  if (dropdownContent.style.display === "block") {
-			  dropdownContent.style.display = "none";
-			  } else {
-			  dropdownContent.style.display = "block";
-			  }
-			  });
+		for (i = 0; i < dropdown.length; i++) {
+			dropdown[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var dropdownContent = this.nextElementSibling;
+			if (dropdownContent.style.display === "block") {
+			dropdownContent.style.display = "none";
+			} else {
+			dropdownContent.style.display = "block";
 			}
+			});
+		}
 			
 </script>
 	

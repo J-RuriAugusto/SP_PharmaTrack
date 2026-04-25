@@ -39,14 +39,14 @@ Customers
 			<a href="pharmmainpage.php">Dashboard</a>
 			
 			<a href="pharm-inventory.php">View Inventory</a>
-			<a href="pharm-pos1.php">Add New Sale</a>
+			<!-- <a href="pharm-pos1.php">Add New Sale</a>
 			<button class="dropdown-btn">Customers
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
 				<a href="pharm-customer.php">Add New Customer</a>
 				<a href="pharm-customer-view.php">View Customers</a>
-			</div>
+			</div> -->
 	</div>
 
 	<?php

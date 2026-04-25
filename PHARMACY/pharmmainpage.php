@@ -15,17 +15,16 @@ body {font-family:Arial;}
 <body>
 
 	<div class="sidenav">
-			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMACIA </h2>
+			<h2 style="font-family:Arial; color:white; text-align:center;"> PHARMATRACK </h2>
 			<a href="pharmmainpage.php">Dashboard</a>
 			
 			<a href="pharm-inventory.php">View Inventory</a>
-			<a href="pharm-pos1.php">Add New Sale</a>
-			<button class="dropdown-btn">Customers
+			<button class="dropdown-btn">Reports
 			<i class="down"></i>
 			</button>
 			<div class="dropdown-container">
-				<a href="pharm-customer.php">Add New Customer</a>
-				<a href="pharm-customer-view.php">View Customers</a>
+				<a href="pharm-stockreport.php">Medicines - Low Stock</a>
+				<a href="pharm-expiryreport.php">Medicines - Soon to Expire</a>
 			</div>
 	</div>
 	
@@ -50,16 +49,19 @@ body {font-family:Arial;}
 	<div class="head">
 	<h2> PHARMACIST DASHBOARD </h2>
 	</div>
-	</center>
-	
-	<a href="pharm-pos1.php" title="Add New Sale">
-	<img src="carticon1.png" style="padding:8px;margin-left:550px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Add New Sale">
-	</a>
+
 	
 	<a href="pharm-inventory.php" title="View Inventory">
 	<img src="inventory.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Inventory">
 	</a>
-	
+	<a href="pharm-stockreport.php" title="Low Stock Alert">
+		<img src="alert.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Low Stock">
+	</a>
+
+	<a href="pharm-expiryreport.php" title="Expiry Alert">
+		<img src="expiryalert.jpg" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Expiry Alert">
+	</a>
+	</center>
 </body>
 
 <script>
@@ -68,15 +70,15 @@ body {font-family:Arial;}
 	var i;
 
 		for (i = 0; i < dropdown.length; i++) {
-		  dropdown[i].addEventListener("click", function() {
-		  this.classList.toggle("active");
-		  var dropdownContent = this.nextElementSibling;
-		  if (dropdownContent.style.display === "block") {
-		  dropdownContent.style.display = "none";
-		  } 
-		  else {
-		  dropdownContent.style.display = "block";
-		  }
+			dropdown[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var dropdownContent = this.nextElementSibling;
+			if (dropdownContent.style.display === "block") {
+			dropdownContent.style.display = "none";
+			} 
+			else {
+			dropdownContent.style.display = "block";
+			}
 		});
 	}
 	

@@ -61,7 +61,10 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `STOCK` ()  NO SQL
 BEGIN
-SELECT med_id, med_name,med_qty,category,med_price,location_rack FROM meds where med_qty<=50;
+SELECT m.med_id, m.med_name, m.med_qty, m.category, p.exp_date
+FROM meds m
+LEFT JOIN purchase p ON m.med_id = p.med_id
+WHERE m.med_qty <= 50;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TOTAL_AMT` (IN `ID` INT, OUT `AMT` DECIMAL(8,2))  NO SQL

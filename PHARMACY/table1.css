@@ -16,7 +16,41 @@
 
 #table1 tr:hover {background-color: #ddd;}
 
+#table1 tr:first-child th {
+    text-align: center;
+}
+
 #table1 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0077b3;
+  color: white;
+}
+
+#employeeTable {
+  font-family: Arial;
+  border-collapse: collapse;
+  margin-top:50px;
+  margin-right:25px;
+  width: 82%;
+  overflow:auto;
+}
+
+#employeeTable td, #employeeTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#employeeTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#employeeTable tr:hover {background-color: #ddd;}
+
+#employeeTable tr:first-child th {
+    text-align: center;
+}
+
+#employeeTable th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
